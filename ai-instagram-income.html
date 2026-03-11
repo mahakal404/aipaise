@@ -2,66 +2,123 @@
 <html>
 <head>
     <title>AI Se Instagram Page Grow Kaise Kare Aur Income Kaise Kare | AIPaise</title>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="AI tools ki madad se Instagram page grow karne aur affiliate, brand promotion se income kamane ka step-by-step guide.">
-
     <meta name="keywords" content="AI Instagram earning, Instagram income Hindi, AI social media growth, Instagram se paisa">
-
     <meta name="author" content="AIPaise">
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G67X5SBPD9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G67X5SBPD9');
-</script>
-
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G67X5SBPD9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G67X5SBPD9');
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
 <nav>
-    <div class="logo">AIPaise</div>
+    <div class="logo">
+    <a href="index.html">
+        <img src="images/AIPaise_logo.png" alt="AIPaise Premium Logo">
+    </a>
+</div>
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
     </ul>
+    <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle">
+            <i id="theme-icon" class="far fa-moon"></i>
+        </button>
+    </div>
 </nav>
 
-<section class="features">
+<section class="features animate-on-scroll">
     <h2>AI Se Instagram Page Grow Kaise Kare Aur Income Kaise Kare</h2>
-
     <div style="max-width:800px; margin:auto; text-align:left;">
-
-        <p>Aaj ke time me Instagram ek powerful earning platform ban chuka hai. AI tools ki madad se aap fast content bana sakte ho.</p>
-
-        <h3>Step 1: Niche Choose Kare</h3>
-        <p>Motivation, Finance, AI, Facts ya Education jaisa ek clear niche select kare.</p>
-
-        <h3>Step 2: AI Se Content Generate Kare</h3>
-        <p>ChatGPT ya Gemini se captions aur content ideas generate kare.</p>
-
-        <h3>Step 3: Canva Se Reels & Posts Banaye</h3>
-        <p>AI images aur templates use karke professional posts design kare.</p>
-
-        <h3>Step 4: Consistency Maintain Kare</h3>
-        <p>Daily 1 post ya reel upload kare. Algorithm consistency ko reward karta hai.</p>
-
-        <h3>Income Kaise Hogi?</h3>
-        <p>Brand promotions, affiliate links aur digital products sell karke earning kar sakte hain.</p>
-
-        <p><strong>Reality Check:</strong> 30–60 din me growth dikhegi agar aap regular content daalte ho.</p>
-
+        <p class="animate-on-scroll">Aaj ke time me Instagram ek powerful earning platform ban chuka hai. AI tools ki madad se aap fast content bana sakte ho.</p>
+        
+        <h3 class="animate-on-scroll">Step 1: Niche Choose Kare</h3>
+        <p class="animate-on-scroll">Motivation, Finance, AI, Facts ya Education jaisa ek clear niche select kare.</p>
+        
+        <h3 class="animate-on-scroll">Step 2: AI Se Content Generate Kare</h3>
+        <p class="animate-on-scroll">ChatGPT ya Gemini se captions aur content ideas generate kare.</p>
+        
+        <h3 class="animate-on-scroll">Step 3: Canva Se Reels & Posts Banaye</h3>
+        <p class="animate-on-scroll">AI images aur templates use karke professional posts design kare.</p>
+        
+        <h3 class="animate-on-scroll">Step 4: Consistency Maintain Kare</h3>
+        <p class="animate-on-scroll">Daily 1 post ya reel upload kare. Algorithm consistency ko reward karta hai.</p>
+        
+        <h3 class="animate-on-scroll">Income Kaise Hogi?</h3>
+        <p class="animate-on-scroll">Brand promotions, affiliate links aur digital products sell karke earning kar sakte hain.</p>
+        
+        <p class="animate-on-scroll"><strong>Reality Check:</strong> 30–60 din me growth dikhegi agar aap regular content daalte ho.</p>
     </div>
+</section>
+
+<section class="newsletter animate-on-scroll">
+    <h2>Stay <span>Updated</span></h2>
+    <p>Subscribe to our newsletter for exclusive AI earning guides and free PDF tools.</p>
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+    </form>
 </section>
 
 <footer>
     <p>© 2026 AIPaise | Built by Roshan</p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </footer>
+
+<script>
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    if(localStorage.getItem('theme') === 'dark') { 
+        body.classList.add('dark-mode'); 
+        themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+        themeIcon.classList.replace('far', 'fas'); 
+    }
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if(body.classList.contains('dark-mode')) { 
+            localStorage.setItem('theme', 'dark'); 
+            themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+            themeIcon.classList.replace('far', 'fas'); 
+        } else { 
+            localStorage.setItem('theme', 'light'); 
+            themeIcon.classList.replace('fa-sun', 'fa-moon'); 
+            themeIcon.classList.replace('fas', 'far'); 
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => { 
+        entries.forEach(entry => { 
+            if(entry.isIntersecting) { entry.target.classList.add('show'); } 
+        }); 
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    });
+</script>
 
 </body>
 </html>

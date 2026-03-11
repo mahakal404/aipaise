@@ -4,13 +4,10 @@
     <title>AIPaise - AI Se Income Seekho</title>
     
     <meta name="description" content="AI tools aur earning methods ko simple Hindi me seekho. AIPaise par practical AI income guides milte hain.">
-    
     <meta name="google-site-verification" content="S2FvnTVKJyVCUjkGgdNoRHIZjvCnt6dqcLAl9J9zR3c" />
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G67X5SBPD9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,22 +16,36 @@
       gtag('config', 'G-G67X5SBPD9');
     </script>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
 <nav>
-    <div class="logo">AIPaise</div>
+    <div class="logo">
+        <img src="images/AIPaise_logo.png" alt="AIPaise Premium Logo">
+    </div>
+    
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle">
+            <i id="theme-icon" class="far fa-moon"></i>
+        </button>
+    </div>
 </nav>
 
-<header class="hero">
+<header class="hero animate-on-scroll">
     <h1>AI Se Paisa Kamana Seekho</h1>
     <p>Simple Hindi Guides. Practical Methods. Real Growth.</p>
     <a href="blog.html">
@@ -42,33 +53,88 @@
     </a>
 </header>
 
-<section class="features">
+<section class="features animate-on-scroll">
     <h2>Yahaan Kya Milega?</h2>
     <div class="box-container">
-        <div class="box">
+        <div class="box animate-on-scroll">
             <h3>AI Tools Guide</h3>
             <p>Best AI tools ko simple Hindi me samjho.</p>
         </div>
-        <div class="box">
+        <div class="box animate-on-scroll">
             <h3>Earning Methods</h3>
             <p>Step-by-step AI se paise kamane ke tareeke.</p>
         </div>
-        <div class="box">
+        <div class="box animate-on-scroll">
             <h3>Practical Tutorials</h3>
             <p>Real examples ke saath complete guidance.</p>
         </div>
     </div>
 </section>
 
-<section class="about">
+<section class="about animate-on-scroll">
     <h2>About AIPaise</h2>
     <p>AIPaise ka mission hai AI ko simple banana aur use earning tool me convert karna.</p>
 </section>
 
+<section class="newsletter animate-on-scroll">
+    <h2>Stay <span>Updated</span></h2>
+    <p>Subscribe to our newsletter for exclusive AI earning guides and free PDF tools.</p>
+    
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+    </form>
+</section>
+
 <footer>
     <p>© 2026 AIPaise | Built by Roshan</p>
-    <p><a href="privacy-policy.html" style="color:white;">Privacy Policy</a></p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </footer>
+
+<script>
+    // Dark Mode Logic
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    if(localStorage.getItem('theme') === 'dark') { 
+        body.classList.add('dark-mode'); 
+        themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+        themeIcon.classList.replace('far', 'fas'); 
+    }
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if(body.classList.contains('dark-mode')) { 
+            localStorage.setItem('theme', 'dark'); 
+            themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+            themeIcon.classList.replace('far', 'fas'); 
+        } else { 
+            localStorage.setItem('theme', 'light'); 
+            themeIcon.classList.replace('fa-sun', 'fa-moon'); 
+            themeIcon.classList.replace('fas', 'far'); 
+        }
+    });
+
+    // Scroll Animation Logic
+    const observer = new IntersectionObserver((entries) => { 
+        entries.forEach(entry => { 
+            if(entry.isIntersecting) { 
+                entry.target.classList.add('show'); 
+            } 
+        }); 
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Progress Bar Logic
+    window.addEventListener('scroll', () => {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    });
+</script>
 
 </body>
 </html>

@@ -2,61 +2,118 @@
 <html>
 <head>
     <title>Best Free AI Tools for Beginners (2026) | AIPaise</title>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Beginners ke liye best free AI tools jaise ChatGPT, Canva aur Gemini ki complete Hindi guide.">
-
     <meta name="keywords" content="best AI tools Hindi, free AI tools 2026, ChatGPT guide Hindi, AI beginners tools">
-
     <meta name="author" content="AIPaise">
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G67X5SBPD9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G67X5SBPD9');
-</script>
-
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G67X5SBPD9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G67X5SBPD9');
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
 <nav>
-    <div class="logo">AIPaise</div>
+    <div class="logo">
+    <a href="index.html">
+        <img src="images/AIPaise_logo.png" alt="AIPaise Premium Logo">
+    </a>
+</div>
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
     </ul>
+    <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle">
+            <i id="theme-icon" class="far fa-moon"></i>
+        </button>
+    </div>
 </nav>
 
-<section class="features">
+<section class="features animate-on-scroll">
     <h2>Best Free AI Tools for Beginners (2026)</h2>
-
     <div style="max-width:800px; margin:auto; text-align:left;">
-
-        <h3>1. ChatGPT</h3>
-        <p>Content writing, idea generation aur freelancing ke liye best tool.</p>
-
-        <h3>2. Canva AI</h3>
-        <p>Poster design, Instagram content aur thumbnail banane ke liye useful.</p>
-
-        <h3>3. Gemini</h3>
-        <p>Research aur information collect karne ke liye helpful AI tool.</p>
-
-        <h3>4. Leonardo AI</h3>
-        <p>AI images generate karke design aur content me use kar sakte ho.</p>
-
-        <p><strong>Tip:</strong> Pehle 1 tool par focus karo. Sab ek saath try mat karo.</p>
-
+        <h3 class="animate-on-scroll">1. ChatGPT</h3>
+        <p class="animate-on-scroll">Content writing, idea generation aur freelancing ke liye best tool.</p>
+        
+        <h3 class="animate-on-scroll">2. Canva AI</h3>
+        <p class="animate-on-scroll">Poster design, Instagram content aur thumbnail banane ke liye useful.</p>
+        
+        <h3 class="animate-on-scroll">3. Gemini</h3>
+        <p class="animate-on-scroll">Research aur information collect karne ke liye helpful AI tool.</p>
+        
+        <h3 class="animate-on-scroll">4. Leonardo AI</h3>
+        <p class="animate-on-scroll">AI images generate karke design aur content me use kar sakte ho.</p>
+        
+        <p class="animate-on-scroll"><strong>Tip:</strong> Pehle 1 tool par focus karo. Sab ek saath try mat karo.</p>
     </div>
+</section>
+
+<section class="newsletter animate-on-scroll">
+    <h2>Stay <span>Updated</span></h2>
+    <p>Subscribe to our newsletter for exclusive AI earning guides and free PDF tools.</p>
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+    </form>
 </section>
 
 <footer>
     <p>© 2026 AIPaise | Built by Roshan</p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </footer>
+
+<script>
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    if(localStorage.getItem('theme') === 'dark') { 
+        body.classList.add('dark-mode'); 
+        themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+        themeIcon.classList.replace('far', 'fas'); 
+    }
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if(body.classList.contains('dark-mode')) { 
+            localStorage.setItem('theme', 'dark'); 
+            themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+            themeIcon.classList.replace('far', 'fas'); 
+        } else { 
+            localStorage.setItem('theme', 'light'); 
+            themeIcon.classList.replace('fa-sun', 'fa-moon'); 
+            themeIcon.classList.replace('fas', 'far'); 
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => { 
+        entries.forEach(entry => { 
+            if(entry.isIntersecting) { entry.target.classList.add('show'); } 
+        }); 
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    });
+</script>
 
 </body>
 </html>

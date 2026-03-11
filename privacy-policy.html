@@ -2,47 +2,102 @@
 <html>
 <head>
     <title>Privacy Policy - AIPaise</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
 <nav>
-    <div class="logo">AIPaise</div>
+    <div class="logo">
+    <a href="index.html">
+        <img src="images/AIPaise_logo.png" alt="AIPaise Premium Logo">
+    </a>
+</div>
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle">
+            <i id="theme-icon" class="far fa-moon"></i>
+        </button>
+    </div>
 </nav>
 
-<section class="features">
+<section class="features animate-on-scroll">
     <h2>Privacy Policy</h2>
-
     <div style="max-width:800px; margin:auto; text-align:left;">
-
-        <p>At AIPaise, we respect your privacy and are committed to protecting your personal information.</p>
-
-        <h3>Information We Collect</h3>
-        <p>We may collect basic information such as name and email when you contact us.</p>
-
-        <h3>How We Use Information</h3>
-        <p>Your information is used only to respond to your queries and improve our website.</p>
-
-        <h3>Cookies</h3>
-        <p>This website may use cookies to enhance user experience and for analytics purposes.</p>
-
-        <h3>Third-Party Services</h3>
-        <p>In the future, we may use third-party services like Google AdSense which may use cookies to serve ads.</p>
-
-        <p>If you have any questions regarding this Privacy Policy, please contact us through our Contact page.</p>
-
+        <p class="animate-on-scroll">At AIPaise, we respect your privacy and are committed to protecting your personal information.</p>
+        
+        <h3 class="animate-on-scroll">Information We Collect</h3>
+        <p class="animate-on-scroll">We may collect basic information such as name and email when you contact us.</p>
+        
+        <h3 class="animate-on-scroll">How We Use Information</h3>
+        <p class="animate-on-scroll">Your information is used only to respond to your queries and improve our website.</p>
+        
+        <h3 class="animate-on-scroll">Cookies</h3>
+        <p class="animate-on-scroll">This website may use cookies to enhance user experience and for analytics purposes.</p>
+        
+        <h3 class="animate-on-scroll">Third-Party Services</h3>
+        <p class="animate-on-scroll">In the future, we may use third-party services like Google AdSense which may use cookies to serve ads.</p>
+        
+        <p class="animate-on-scroll">If you have any questions regarding this Privacy Policy, please contact us through our Contact page.</p>
     </div>
 </section>
 
 <footer>
     <p>© 2026 AIPaise | Built by Roshan</p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </footer>
+
+<script>
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    if(localStorage.getItem('theme') === 'dark') { 
+        body.classList.add('dark-mode'); 
+        themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+        themeIcon.classList.replace('far', 'fas'); 
+    }
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if(body.classList.contains('dark-mode')) { 
+            localStorage.setItem('theme', 'dark'); 
+            themeIcon.classList.replace('fa-moon', 'fa-sun'); 
+            themeIcon.classList.replace('far', 'fas'); 
+        } else { 
+            localStorage.setItem('theme', 'light'); 
+            themeIcon.classList.replace('fa-sun', 'fa-moon'); 
+            themeIcon.classList.replace('fas', 'far'); 
+        }
+    });
+
+    const observer = new IntersectionObserver((entries) => { 
+        entries.forEach(entry => { 
+            if(entry.isIntersecting) { entry.target.classList.add('show'); } 
+        }); 
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    });
+</script>
 
 </body>
 </html>

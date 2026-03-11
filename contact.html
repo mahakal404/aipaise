@@ -2,55 +2,70 @@
 <html>
 <head>
     <title>Contact AIPaise</title>
-    <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G67X5SBPD9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G67X5SBPD9');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G67X5SBPD9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G67X5SBPD9');
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div id="progress-container"><div id="progress-bar"></div></div>
 <nav>
-    <div class="logo">AIPaise</div>
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/AIPaise_logo.png" alt="AIPaise Premium Logo">
+        </a>
+    </div>
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
+    <div class="nav-right">
+        <button id="theme-toggle" class="theme-toggle"><i id="theme-icon" class="far fa-moon"></i></button>
+    </div>
 </nav>
-
-<section class="features">
+<section class="features animate-on-scroll">
     <h2>Contact Us</h2>
-
     <div style="max-width:600px; margin:auto; text-align:left;">
-
-        <form>
-
-            <label>Your Name</label><br>
-            <input type="text" placeholder="Enter your name" required><br><br>
-
-            <label>Your Email</label><br>
-            <input type="email" placeholder="Enter your email" required><br><br>
-
-            <label>Your Message</label><br>
-            <textarea rows="5" placeholder="Write your message..." required></textarea><br><br>
-
+        <form name="contact" method="POST" data-netlify="true" class="animate-on-scroll">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <label>Your Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <label>Your Message</label>
+            <textarea name="message" rows="5" placeholder="Write your message..." required></textarea>
             <button type="submit">Send Message</button>
-
         </form>
-
     </div>
 </section>
-
 <footer>
     <p>© 2026 AIPaise | Built by Roshan</p>
-    <p><a href="privacy-policy.html" style="color:white;">Privacy Policy</a></p>
+    <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </footer>
-
+<script>
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+    if(localStorage.getItem('theme') === 'dark') { body.classList.add('dark-mode'); themeIcon.classList.replace('fa-moon', 'fa-sun'); themeIcon.classList.replace('far', 'fas'); }
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        if(body.classList.contains('dark-mode')) { localStorage.setItem('theme', 'dark'); themeIcon.classList.replace('fa-moon', 'fa-sun'); themeIcon.classList.replace('far', 'fas'); } 
+        else { localStorage.setItem('theme', 'light'); themeIcon.classList.replace('fa-sun', 'fa-moon'); themeIcon.classList.replace('fas', 'far'); }
+    });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('show'); } }); }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+    });
+</script>
 </body>
 </html>
