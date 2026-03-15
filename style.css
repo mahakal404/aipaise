@@ -56,7 +56,7 @@ nav {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding: 5px 15px; /* Padding kam kiya hai taaki logo kinare ke paas jaye */
+    padding: 5px 15px; 
     background-color: var(--nav-bg);
     border-bottom: 1px solid var(--nav-border);
     position: sticky;
@@ -65,18 +65,18 @@ nav {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: background-color 0.3s ease;
-    min-height: 80px; /* Navbar height fix */
+    min-height: 80px; 
 }
 
 nav .logo {
     display: flex;
     align-items: center;
     z-index: 1001;
-    margin-left: -5px; /* Logo ko left boundary ki taraf dhakela gaya hai */
+    margin-left: -5px; 
 }
 
 nav .logo img {
-    width: 280px; /* Aapki demand ke hisab se width */
+    width: 280px; 
     height: auto;
     max-height: 85px;
     object-fit: contain;
@@ -91,7 +91,7 @@ nav ul {
     padding: 0;
     position: absolute; 
     left: 50%;
-    transform: translateX(-50%); /* Isse menu hamesha center mein rahega */
+    transform: translateX(-50%); 
 }
 
 nav ul li a {
@@ -199,10 +199,6 @@ button[type="submit"]:hover, .hero button:hover, .btn:hover {
 .box h3 { margin-top: 0; color: var(--text-color); }
 .box a { color: var(--accent-color); text-decoration: none; font-weight: bold; display: inline-block; margin-top: 15px; }
 
-.features div[style*="max-width:800px"], .features div[style*="max-width:600px"] {
-    line-height: 1.8; font-size: 17px;
-}
-
 .about {
     background-color: var(--card-bg);
     text-align: center; padding: 70px 20px;
@@ -250,8 +246,32 @@ footer a { color: var(--accent-color); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
 /* =========================================
+   🖋️ TYPOGRAPHY & SPACING FIX (Line chipakne ka solution)
+   ========================================= */
+article p, .features p, .box p {
+    line-height: 1.8; /* Ye lines ke beech mast gap dega */
+    font-size: 17px;
+    margin-bottom: 20px; /* Paragraphs ke beech space */
+    color: var(--text-color);
+    opacity: 0.9;
+    letter-spacing: 0.3px;
+}
+
+article li, .features li {
+    line-height: 1.7;
+    font-size: 16px;
+    margin-bottom: 14px; /* List items ek dusre se thoda door rahenge */
+    opacity: 0.9;
+}
+
+article h2, .features h2 {
+    line-height: 1.4;
+    margin-top: 45px; /* Headings ke upar saans lene ki jagah */
+    margin-bottom: 20px;
+}
+
+/* =========================================
    📱 MOBILE RESPONSIVE DESIGN FIX
-   (ADDED AT THE END)
    ========================================= */
 @media screen and (max-width: 768px) {
     nav {
@@ -290,4 +310,130 @@ footer a:hover { text-decoration: underline; }
         right: 20px;
         margin: 0;
     }
+
+    /* Mobile Typography adjustments */
+    article p, .features p, .box p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+}
+
+/* =========================================
+   🚀 3D FLOATING ANIMATION FOR AI TOOL PAGES
+   ========================================= */
+
+.guide-header {
+    background: var(--card-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 24px;
+    padding: 100px 30px 40px 30px; 
+    text-align: center;
+    position: relative;
+    margin-top: 100px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.brand-icon-3d {
+    width: 220px; 
+    height: auto;
+    position: absolute;
+    top: -110px; 
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 15px 30px rgba(255, 153, 0, 0.5)); 
+    transition: all 0.4s ease;
+    z-index: 5;
+    border-radius: 20px; 
+}
+
+.guide-header:hover .brand-icon-3d {
+    top: -130px; 
+    transform: translateX(-50%) scale(1.1);
+}
+
+.guide-header:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+@media screen and (max-width: 768px) {
+    .brand-icon-3d {
+        width: 150px; 
+        top: -75px; 
+    }
+    .guide-header {
+        margin-top: 80px;
+        padding-top: 80px; 
+    }
+    .guide-header:hover .brand-icon-3d {
+        top: -90px;
+    }
+}
+
+/* =========================================
+   🌟 HOME PAGE PREMIUM UPGRADES
+   ========================================= */
+
+/* Hero Section Background Magic */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, rgba(255, 153, 0, 0.05), transparent), var(--bg-color);
+}
+
+/* Glassmorphism Effect for Feature Cards */
+.box {
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--nav-border);
+}
+
+/* Feature Icon Style */
+.feature-icon {
+    font-size: 40px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+/* Trending Tools Section (Mini Cards) */
+.trending-tools {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Mobile par tootne se bachayega */
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.mini-tool-card {
+    background: var(--card-bg);
+    padding: 15px 25px;
+    border-radius: 50px;
+    border: 1px solid var(--nav-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--text-color);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.mini-tool-card i {
+    font-size: 20px;
+    color: var(--accent-color);
+}
+
+.mini-tool-card:hover {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 153, 0, 0.2);
+}
+
+/* Mini Icons inside Buttons (MERA NAYA CODE YAHAN HAI) */
+.mini-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border-radius: 4px;
 }
